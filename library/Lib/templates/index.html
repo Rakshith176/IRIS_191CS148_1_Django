@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container bg bg-white">
+        <center>
+        	{% if user.is_authenticated %}
+            <H2>
+               WELCOME {{ user }}<br>
+               <p>Go through the options for the desired actions</p>
+               
+            </H2>
+            {% else %}
+             <H2>Register as a student to start using the library services</H2>
+             <p>If registered please login</p>
+             {% endif %}
+    </div>
+    </center>
+{% endblock %}

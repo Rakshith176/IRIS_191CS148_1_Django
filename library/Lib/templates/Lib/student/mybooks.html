@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+{%  if books_approved %}
+<H1>These Books are approved by the Librarian</H1>
+
+
+		{% for s in books_approved %}
+            
+            {% if s.stud_id == request.user %} 
+            <ul class="list-group">
+            <li class="list-group-item">{{ s.book_id.Title }} issued on {{ s.issue_date }}
+            <a type="button" class="btn btn-primary btn-sm" href="{% url 'return_book' pk=s.id %}" >Return</a>
+            </li>
+            
+            </ul>
+            {% endif %}
+
+
+		{%endfor%}
+
+		
+
+{% else %}
+<H1>No BOOKS</H1>		
+
+{% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}
