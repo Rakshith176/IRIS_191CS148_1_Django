@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% if request.user.is_superuser %}
+   <a type="button" class="btn btn-primary btn-sm" href="{% url 'csv_file' %}" >Download</a>
+{% endif %}
+
+{% if completed_transaction %}
+
+{% for books in completed_transaction %}
+
+{% if request.user.is_superuser %}
+
+<div class="container">
+  <h2>All Transactions</h2>
+  <ul class="list-group">
+    <li class="list-group-item">{{ books.book_id }} by {{ books.stud_id }} <p>Returned on {{books.return_date}}</p></li>
+  </ul>
+</div>
+
+{% else %}
+<div class="container">
+  <h2>All Transactions</h2>
+  <ul class="list-group">
+    <li class="list-group-item">{{ books.book_id }}<p>Returned on {{books.return_date}}</p></li>
+  </ul>
+</div>
+
+{% endif %}
+
+{% endfor %}
+
+{% else %}
+
+<H1>NO Transactions made yet</H1>
+
+{% endif %}
+{% endblock %}

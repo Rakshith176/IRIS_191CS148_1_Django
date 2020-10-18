@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<h1>Book List</h1>
+
+    {% if book_list %}
+
+    <div class="row mx-auto">
+      {% for book in book_list %}
+
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ book.pic.url }}" alt="Card image cap" /> 
+          <div class="card-body">
+            <h5 class="card-title">{{ book.Title }}</h5>
+            <p class="card-text">{{book.Description}}</p>
+            <a href="{% url 'book_detail' pk=book.id %}">More Info</a>
+          </div>
+      </div>
+     
+      {% endfor %}
+    </div>
+
+
+    {% else %}
+      <p class=" bg bg-white">There are no books.</p>
+    {% endif %}       
+{% endblock %}
