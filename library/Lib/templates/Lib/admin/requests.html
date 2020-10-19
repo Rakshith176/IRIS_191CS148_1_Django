@@ -64,7 +64,7 @@ body {font-family: Arial;}
     {% for req in approved  %}
             
             <ul class="list-group">
-            <li class="list-group-item">Book:{{ req.book_id.Title }} <p>Student: {{ req.stud_id }}<p> on {{req.issue_date }}</p></p></li>
+            <li class="list-group-item">Book:{{ req.book_id.title }} <p>Student: {{ req.stud_id }}<p> on {{req.issue_date }}</p></p></li>
             
             </ul>
 
@@ -85,7 +85,7 @@ body {font-family: Arial;}
     {% for req in pending  %}
             
             <ul class="list-group">
-            <li class="list-group-item">Book: {{ req.book_id.Title }} by <p>Student: {{ req.stud_id }}</p><p><a class="badge" href="{% url 'approve' pk=req.id %}">Approve</a></p>   <a class="badge" href="{% url 'reject' pk=req.id %}">Reject</a> </li>
+            <li class="list-group-item">Book: {{ req.book_id.title }} by <p>Student: {{ req.stud_id }}</p><p><a class="badge" href="{% url 'approve' pk=req.id %}">Approve</a></p>   <a class="badge" href="{% url 'reject' pk=req.id %}">Reject</a> </li>
             
             </ul>
 
@@ -107,7 +107,7 @@ body {font-family: Arial;}
     {% for req in rejected  %}
             
             <ul class="list-group">
-            <li class="list-group-item">Book: {{ req.book_id.Title }} <p>Student: {{ req.stud_id }}</p></li>
+            <li class="list-group-item">Book: {{ req.book_id.title }} <p>Student: {{ req.stud_id }}</p></li>
             
             </ul>
 

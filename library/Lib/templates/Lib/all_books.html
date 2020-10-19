@@ -9,15 +9,16 @@
 
     <div class="row mx-auto">
       {% for book in book_list %}
-
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{ book.pic.url }}" alt="Card image cap" /> 
-          <div class="card-body">
-            <h5 class="card-title">{{ book.Title }}</h5>
-            <p class="card-text">{{book.Description}}</p>
-            <a href="{% url 'book_detail' pk=book.id %}">More Info</a>
-          </div>
-      </div>
+      {% if book.quantity %}
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="{{ book.pic.url }}" alt="Book image" /> 
+                <div class="card-body">
+                  <h5 class="card-title">{{ book.title }}</h5>
+                  <p class="card-text">{{book.description}}</p>
+                  <a href="{% url 'book_detail' pk=book.id %}">More Info</a>
+                </div>
+            </div>
+      {% endif %}
      
       {% endfor %}
     </div>

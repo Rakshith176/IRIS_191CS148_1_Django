@@ -1,12 +1,22 @@
 {% extends "layout.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+
+{% if user.is_authenticated %}
+<!-- checks if user is already logged in -->
+   
+   <H3>Your already registered. Logout to <a href="{% url 'register' %}">register</a> new student</H3>
+
+{% else %}
+
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Register</legend>
+
                 {{ form|crispy }}
+                <!-- this displays fields that were added to extended user model -->
                 {{profile_form|crispy}}
             </fieldset>
             <div class="form-group">
@@ -19,4 +29,7 @@
             </small>
         </div>
     </div>
+
+{% endif %}
+
 {% endblock content %}

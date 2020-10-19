@@ -126,7 +126,8 @@ LOGIN_URL = 'login'
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/book_img')
+
 
 CRISPY_TEMPLATE_PACK='bootstrap4'

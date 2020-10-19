@@ -1,0 +1,5 @@
+Django==3.0.8               
+django-crispy-forms==1.9.2        
+django-isbn-field==0.5.2
+email-validator==1.1.1
+Pillow==7.0.0

@@ -1,3 +1,5 @@
+<!-- The home page template for users -->
+
 {% extends "layout.html" %}
 
 {% block content %}
@@ -11,7 +13,7 @@
             </H2>
             {% else %}
              <H2>Register as a student to start using the library services</H2>
-             <p>If registered please login</p>
+             <p>If registered please <a href="{% url 'login' %}">login</a></p>
              {% endif %}
     </div>
     </center>

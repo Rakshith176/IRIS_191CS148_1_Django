@@ -3,43 +3,44 @@
 
 {% block content %}
     <div class="container bg bg-white">
-
     <div class="container-fliud">
     <div class="wrapper row">
     <div class="preview col-6">
 
-        <div class="preview-pic tab-content">
-            <div class="tab-pane active  my-auto mx-auto" id="pic-1"><img
-                    src="{{ book.pic.url }}" height="500" width="400"/>
-            </div>
+    <div class="preview-pic tab-content">
+        <div class="tab-pane active  my-auto mx-auto"><img
+                src="{{ book.pic.url }}" height="500" width="400"/>
         </div>
-
+    </div>
 
     </div>
     <div class="details col-6">
-        <h1>Title: {{ book.Title }}</h1>
-
-        <p><strong>Description:</strong> {{ book.Description }}</p>
+        <h1>Title: {{ book.title }}</h1>
+        <p><strong>Description:</strong> {{ book.description }}</p>
         <p><strong>ISBN:</strong> {{ book.isbn}}</p>
         <div style="margin-left:20px;margin-top:20px">
             
             {% if user.is_superuser %}
+                <!-- for the librarian -->
                 <a class="btn btn-danger" href="{% url 'book_delete' pk=book.id %}">DELETE</a>
                 <a class="btn btn-success" href="{% url 'book_update' pk=book.id %}">EDIT</a>
             
             {% elif user.is_authenticated and not user.is_superuser %}
+            <!-- for the students -->
                 <a class="btn btn-success" href="{% url 'issue_request' pk=book.id %}">Create Request</a>
 
-
             {% endif %}
-            {% if book.Quantity %}
+
+            {% if book.quantity %}
                 <br>
                 <h4>Copies</h4>
-                no of available copies={{ book.Quantity }}<br>
-                {% endif %}
-          </div>
+                no of available copies={{ book.quantity }}<br>
+            {% else %}
+                <H5>NO copies available</H5>
 
-
+            {% endif %}
+            
+        </div>
     </div>
 
     {%endblock%}
