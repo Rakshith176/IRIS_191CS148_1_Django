@@ -12,18 +12,20 @@
 
 {% if request.user.is_superuser %}
 
+<!-- this displays all the transactions that has happend till date -->
 <div class="container">
   <h2>All Transactions</h2>
   <ul class="list-group">
-    <li class="list-group-item">{{ books.book_id }} by {{ books.stud_id }} <p>Returned on {{books.return_date}}</p></li>
+    <li class="list-group-item"><H4>{{ books.book_id }}</H4> by <H5>{{ books.stud_id }}</H5> <p>Returned on {{books.return_date}}</p></li>
   </ul>
 </div>
 
 {% else %}
+<!-- this displays transactions made by the student till date -->
 <div class="container">
   <h2>All Transactions</h2>
   <ul class="list-group">
-    <li class="list-group-item">{{ books.book_id }}<p>Returned on {{books.return_date}}</p></li>
+    <li class="list-group-item"><H4>{{ books.book_id }}</H4><p>Returned on {{books.return_date}}</p></li>
   </ul>
 </div>
 
