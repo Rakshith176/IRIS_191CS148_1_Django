@@ -57,6 +57,7 @@ Paste the url in the browser to run the project locally(this project's home page
    * The admin also has an option to **download** all the transaction history(book, student, issue date, return date, duration) as a csv file.
    
    ### Student
+   * Students are requested to register using the registration portal to start using library services
    * A student can create a issue request to the library for a book which is available and displayed.
    * A list of books that are yet to be approved by the library is made available.
    * He/She is **prohibited from creating multiple requests** to the same book if its approved(and not returned back) or requested and not approved yet. A warning message is displayed if a request is made to the same book.
