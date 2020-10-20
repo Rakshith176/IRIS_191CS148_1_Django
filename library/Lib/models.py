@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 
 class Book(models.Model):
-      title=models.CharField(max_length=30)
-      description=models.TextField()
-      quantity=models.IntegerField()
-      isbn=ISBNField(clean_isbn=False, null=False)
-      pic=models.ImageField(default='default.jpg', upload_to='media/book_img')
+      title = models.CharField(max_length = 30, unique = True, null = False)
+      description = models.TextField()
+      quantity = models.IntegerField()
+      isbn = ISBNField(clean_isbn = False, null = False, unique = True)
+      pic = models.ImageField(default = 'default.jpg', upload_to = 'book_img')
 
       def __str__(self):
         return self.title
@@ -21,9 +21,9 @@ class Book(models.Model):
 
 #this model extends the user model to store more info of the student
 class Student(models.Model):
-     user=models.OneToOneField(User,on_delete=models.CASCADE)
-     roll_no=models.CharField(max_length=10)
-     is_student=models.BooleanField(default=False)
+     user = models.OneToOneField(User,on_delete=models.CASCADE)
+     roll_no = models.CharField(max_length=10, unique = True, null = False)
+     is_student = models.BooleanField(default=False)
 
      def __str__(self):
       return self.user
@@ -39,10 +39,10 @@ issue_req=(
 
 #this model stores the transaction history
 class Status(models.Model):
-      stud_id=models.ForeignKey(User,on_delete=models.CASCADE)
-      book_id=models.ForeignKey(Book,on_delete=models.CASCADE)
-      issue_date=models.DateTimeField(null=True,blank=True)
-      return_date=models.DateTimeField(null=True,blank=True)
-      req=models.CharField(choices=issue_req,default='none',max_length=8)
+      stud_id = models.ForeignKey(User,on_delete = models.CASCADE)
+      book_id = models.ForeignKey(Book,on_delete = models.CASCADE)
+      issue_date = models.DateTimeField(null = True,blank = True)
+      return_date = models.DateTimeField(null = True,blank = True)
+      req = models.CharField(choices = issue_req,default = 'none',max_length = 8)
 
 

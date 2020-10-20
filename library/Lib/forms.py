@@ -11,16 +11,16 @@ class Add_Book(forms.ModelForm):
 
 
 class Student_register(UserCreationForm):
-    email=models.EmailField(null=False,unique=True)
+    email = models.EmailField(null=False,unique=True)
 
     class Meta:
-        model=User
-        fields=('username','email','password1','password2',)
+        model = User
+        fields = ('username','email','password1','password2',)
         
     def save(self,commit=True):
-        user=super().save(commit=False)
+        user = super().save(commit = False)
 
-        user.email=self.cleaned_data['email']
+        user.email = self.cleaned_data['email']
 
         if commit:
             user.save()
@@ -29,5 +29,5 @@ class Student_register(UserCreationForm):
 
 class Student_Profile(forms.ModelForm):
     class Meta:
-        model=Student
-        fields=('roll_no','is_student')
+        model = Student
+        fields = ('roll_no','is_student')

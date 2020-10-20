@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if request.user.is_superuser %}
-   <a type="button" class="btn btn-primary btn-sm" href="{% url 'csv_file' %}" >Download</a>
+   <a type = "button" class="btn btn-primary btn-sm" href = "{% url 'csv_file' %}" >Download</a>
 {% endif %}
 
 {% if completed_transaction %}

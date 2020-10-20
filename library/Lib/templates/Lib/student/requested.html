@@ -1,18 +1,18 @@
 {%  extends "layout.html"  %}
 
+<!-- displays list of books which are requested and pending to be approved for the user -->
 {% block content %}
 
 <H2>Books yet to be approved</H2>
 
-<p>{%  if pending_req %}
+<p>
+{%  if pending_req %}
 
     {% for req in pending_req %}
             
             <ul class="list-group">
             <li class="list-group-item"><H3>Book: {{ req.book_id.title }}</H3></li> 
             </ul>
-
-
 
     {%endfor%}
 

@@ -45,7 +45,7 @@ body {font-family: Arial;}
 
 {% block content %}
 
-
+<!-- displays the requests in different tabs as approved, pending, rejected -->
 {% if user.is_superuser %}
 
 <h2>Tabs</h2>
@@ -68,8 +68,6 @@ body {font-family: Arial;}
             
             </ul>
 
-
-
     {%endfor%}
 
 {% else %}
@@ -88,8 +86,6 @@ body {font-family: Arial;}
             <li class="list-group-item">Book: {{ req.book_id.title }} by <p>Student: {{ req.stud_id }}</p><p><a class="badge" href="{% url 'approve' pk=req.id %}">Approve</a></p>   <a class="badge" href="{% url 'reject' pk=req.id %}">Reject</a> </li>
             
             </ul>
-
-
 
     {%endfor%}
 
@@ -111,8 +107,6 @@ body {font-family: Arial;}
             
             </ul>
 
-
-
     {%endfor%}
 
 {% else %}
@@ -124,24 +118,14 @@ body {font-family: Arial;}
 </div>
 
 
-
-
-
 {% else %}
-
-
 
 
 <H1>Not Authorized</H1>
 
-
-
 {%endif%}
 
-
-
-
-{% endblock %}
+{% endblock content %}
 
 {% block script %}
 
@@ -159,4 +143,4 @@ function openRequest(evt, cityName) {
   evt.currentTarget.className += " active";
 }
 
-{% endblock %}
+{% endblock script %}
