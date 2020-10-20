@@ -35,6 +35,11 @@ git clone https://github.com/Rakshith176/IRIS_191CS148_1_Django.git
 cd IRIS_191CS148_1_Django
 cd library
 ```
+* Create a user_id and password for the admin manually
+```
+python manage.py createsuperuser
+```
+
 * The final step to start the local server by running the below command
 ```
 python manage.py runserver
