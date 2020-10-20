@@ -35,16 +35,28 @@ def all_books(request):
     return render(request, 'Lib/all_books.html', locals())
 
 
-#details of the as requested
+#details of the book as requested
 def book_detail(request, pk):
     book = get_object_or_404(Book, id = pk)
     return render(request, 'Lib/book_detail.html', locals())
 
 
+#returns the transactions that have been made till date
+@login_required
+def transactions(request):
+    if request.user.is_superuser:
+        completed_transaction = Status.objects.exclude(return_date = None)#returns all transactions to the admin that are completed
+    else:
+        student = User.objects.get(id = request.user.id)
+        completed_transaction = Status.objects.filter(stud_id = student)
+        completed_transaction = completed_transaction.exclude(return_date = None)#returns transactions made by the user with the library  
+    return render(request,"Lib/transactions.html",locals())
+
+
 
 #The following functions are specific for the admin user only
 
-#function for the librarian(superuser in this case) to add new books to the portal
+#function for the librarian(superuser is treated as admin) to add new books to the portal
 @login_required
 def add_book(request):
     if not request.user.is_superuser:
@@ -96,9 +108,9 @@ def requests(request):
     if not request.user.is_superuser:
         messages.warning(request,f'You dont have access')
         return redirect('lib-home')
-    pending = Status.objects.filter(req='pending')
-    approved = Status.objects.filter(req='approved')
-    rejected = Status.objects.filter(req='rejected')
+    pending = Status.objects.filter(req = 'pending')
+    approved = Status.objects.filter(req = 'approved')
+    rejected = Status.objects.filter(req = 'rejected')
     return render(request,'Lib/admin/requests.html',locals())
 
 
@@ -200,8 +212,8 @@ def issue_request(request,pk):
 #displays all the books which are approved and not returned back
 @login_required
 def mybooks(request):
-    books_approved = Status.objects.filter(req='approved')
-    books_approved = books_approved.filter(stud_id=request.user.id)
+    books_approved = Status.objects.filter(req = 'approved')
+    books_approved = books_approved.filter(stud_id = request.user.id)
     return render(request,"Lib/student/mybooks.html",locals())
 
 
@@ -232,14 +244,3 @@ def requested(request):
     pending_req = pending_req.filter(req = 'pending')
     return render(request, 'Lib/student/requested.html', locals())
 
-
-#returns the transactions that have been made till date
-@login_required
-def transactions(request):
-    if request.user.is_superuser:
-        completed_transaction = Status.objects.exclude(return_date = None)#returns all transactions to the admin that are completed
-    else:
-        student = User.objects.get(id = request.user.id)
-        completed_transaction = Status.objects.filter(stud_id = student)
-        completed_transaction = completed_transaction.exclude(return_date = None)#returns transactions made by the user with the library  
-    return render(request,"Lib/transactions.html",locals())

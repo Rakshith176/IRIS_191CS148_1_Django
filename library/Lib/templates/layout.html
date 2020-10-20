@@ -15,7 +15,7 @@
   }
 
   {% block styles %}
-  {%endblock styles %}
+  {% endblock styles %}
 
 </style>
 </head>
@@ -35,7 +35,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'register' %}">Register</a>
       </li>
-      {%endif%}
+      {% endif %}
       
        {% if user.is_superuser %}
        <!-- The following options are displayed to the librarian  -->
