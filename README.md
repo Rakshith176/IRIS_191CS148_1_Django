@@ -44,16 +44,16 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
-* You will be provided a url on the terminal which for example looks like http://127.0.0.1:8000/
+* You will be provided a url on the terminal which for example looks like http://127.0.0.1:8000/ .
 Paste the url in the browser to run the project locally(this project's home page will appear after adding /lib at the end of given url)
  
  
 ## Implemented Features
    ### Admin
-   * Dashboard to add , edit, update, delete books
-   * Has access to approve or reject the book issue request created by the student(initially the request would be pending when the student creates the request)
-   * A dashboard to view the approved, pending, rejected requests in three different tabs
-   * Once the approved book is returned(considered a complete transaction) it gets added to the transaction dashboard. Where all transaction history is shown with required parameters
+   * Dashboard to add , edit, update, delete books.
+   * Has access to approve or reject the book issue request created by the student(initially the request would be pending when the student creates the request).
+   * A dashboard to view the approved, pending, rejected requests in three different tabs.
+   * Once the approved book is returned(considered a complete transaction) it gets added to the transaction dashboard. Where all transaction history is shown with required parameters.
    * The admin also has an option to **download** all the transaction history(book, student, issue date, return date, duration) as a csv file.
    
    ### Student
@@ -66,21 +66,21 @@ Paste the url in the browser to run the project locally(this project's home page
    * The transaction section is made available for the student to view all transactions that were completed till date.
    
    ### General Features
-   * All books that are added by the admin is showed in all books section(which has quantity greater than 0)
+   * All books that are added by the admin is showed in all books section(which has quantity greater than 0).
    * Quantity of book is decreased once the book is approved and increased if the book is returned by the student automatically.
    * Options to add, delete, update, approve books etc.. students are prevented access to this as they are specific to admin only.
    * Flash messages are activated for every action done.
-   * Features given to admin are not made available to student(security issues are sorted)
+   * Features given to admin are not made available to student(security issues are sorted).
    
    
 ## Planned Features
- * For now the admin will be given userid and password to login to admin portal(or can be created manually). A registration page can be made giving a secret key opt for teachers to create their admin profile through the website. **This data can be stored in the same table where student info is stored**. Which we will have a single table in the database for student and teachers..
+ * For now the admin will be given userid and password to login to admin portal(or can be created manually). A registration page can be made giving a secret key opt for teachers to create their admin profile through the website. **This data can be stored in the same table where student info is stored**. Which we will have a single table in the database for student and teachers.(by extending the default user model)
  * Multiple images uploading option.
  * Frontend can be improved better
  
  ## Known Bugs
- * There is slight problem with media folder
- If any bugs or issues is found please do open an issue mentioning the problem
+ * There is slight problem with media folder.
+ If any bugs or issues is found please do open an issue mentioning the problem.
  
  ## References
  * [Django documentation](https://docs.djangoproject.com/en/3.1/)
